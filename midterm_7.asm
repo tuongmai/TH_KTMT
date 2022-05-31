@@ -10,6 +10,7 @@ sort_by_height:
 L1:
 	beq $a2,$a3,end_sort # Kiem tra da ket thuc mang hay chua
 	lw $a1,0($a2) # Lay gia tri a[i] luu vao a1
+	add $s2,$a2,$zero # Luu dia chi a[i] vao s2
 	addi $a2,$a2,4 # Luu dia chi phan tu tiep theo vao a2
 	beq $a1,-1,print # Neu a1 = -1, in ra man hinh
 	add $t0,$a2,$zero # Luu dia chi phan tu a[i+1] vao t0
@@ -30,6 +31,7 @@ swap:
 	add $s0,$a1,$zero # tmp = a1
 	add $a1,$t1,$zero # a1 = t1
 	add $t1,$s0,$zero # t1 = tmp
+	sw $a1,0($s2) # Luu vao mang
 	sw $t1,0($t2) # Luu vao mang
 	jr $ra
 print:
